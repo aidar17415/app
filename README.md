@@ -2,6 +2,50 @@
 
 **Classification of Flying Objects Using Artificial Neural Networks**
 
+[![CI](https://github.com/aidar17415/app/actions/workflows/ci.yml/badge.svg)](https://github.com/aidar17415/app/actions/workflows/ci.yml)
+
+---
+
+## Жүктеп алу / Download
+
+**Жобаны жүктеп алудың 3 жолы / 3 ways to download the project:**
+
+### 1 · ZIP архиві / ZIP archive (ең оңай / easiest)
+
+GitHub беттің жоғарғы жағынан:
+**Code → Download ZIP**
+
+```
+https://github.com/aidar17415/app/archive/refs/heads/copilot/classify-flying-objects-nn.zip
+```
+
+### 2 · Git арқылы клондау / Clone with Git
+
+```bash
+git clone https://github.com/aidar17415/app.git
+cd app
+pip install -r requirements.txt
+```
+
+### 3 · pip арқылы орнату / Install with pip (Python package)
+
+```bash
+# Тікелей GitHub-тан / Directly from GitHub
+pip install git+https://github.com/aidar17415/app.git@copilot/classify-flying-objects-nn
+
+# Немесе жергілікті клоннан / Or from a local clone
+git clone https://github.com/aidar17415/app.git
+cd app
+pip install .
+```
+
+Орнатқаннан кейін CLI командалары қолжетімді болады / After installation, CLI commands are available:
+
+```bash
+flying-train    # үлгіні үйрету / train the model
+flying-predict  # объектіні жіктеу / classify an object
+```
+
 ---
 
 ## Жобаның мақсаты / Project Goal

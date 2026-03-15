@@ -128,13 +128,13 @@ def generate_dataset(
 # ---------------------------------------------------------------------------
 
 class FeatureNormalizer:
-    """Z-score normaliser computed on training data and applied to any split.
+    """Z-score normalizer computed on training data and applied to any split.
 
     Usage::
 
-        normaliser = FeatureNormalizer()
-        X_train_norm = normaliser.fit_transform(X_train)
-        X_test_norm  = normaliser.transform(X_test)
+        normalizer = FeatureNormalizer()
+        X_train_norm = normalizer.fit_transform(X_train)
+        X_test_norm  = normalizer.transform(X_test)
     """
 
     def __init__(self) -> None:

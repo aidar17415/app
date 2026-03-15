@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "flying-object-classifier"
+version = "1.0.0"
+description = "Classification of flying objects (bird, drone, airplane, helicopter) using a NumPy MLP neural network"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
+keywords = ["neural-network", "classification", "flying-objects", "machine-learning", "numpy"]
+dependencies = [
+    "numpy>=1.24.0",
+]
+
+[project.scripts]
+flying-train   = "src.train:main"
+flying-predict = "src.predict:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*"]
+
+[tool.setuptools.package-data]
+"*" = ["*.md"]

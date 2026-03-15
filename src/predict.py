@@ -28,11 +28,11 @@ def load_artifacts(
     normalizer_path: str = "normalizer.npz",
     hidden_sizes: list[int] | None = None,
 ) -> tuple[FlyingObjectClassifier, FeatureNormalizer]:
-    """Load a saved model and normaliser from disk.
+    """Load a saved model and normalizer from disk.
 
     Args:
         model_path:      Path to model weights (.npz).
-        normalizer_path: Path to normaliser statistics (.npz).
+        normalizer_path: Path to normalizer statistics (.npz).
         hidden_sizes:    Must match the architecture used during training.
 
     Returns:
@@ -102,7 +102,7 @@ def main() -> None:
     parser.add_argument("--model-path", default="model.npz",
                         help="Path to saved model weights (default: model.npz).")
     parser.add_argument("--normalizer-path", default="normalizer.npz",
-                        help="Path to normaliser statistics (default: normalizer.npz).")
+                        help="Path to normalizer statistics (default: normalizer.npz).")
     parser.add_argument("--speed", type=float, required=True,
                         help="Speed in km/h.")
     parser.add_argument("--altitude", type=float, required=True,
