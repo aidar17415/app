@@ -1,0 +1,68 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install build tools and dependencies
+        run: pip install build && pip install -r requirements.txt
+
+      - name: Run tests
+        run: python -m unittest discover -s tests -v
+
+      - name: Build source distribution and wheel
+        run: python -m build
+
+      - name: Create ZIP archive of source code
+        run: |
+          zip -r flying-object-classifier-${{ github.ref_name }}.zip \
+            src/ tests/ README.md requirements.txt pyproject.toml .gitignore
+
+      - name: Upload release assets
+        uses: softprops/action-gh-release@v2
+        with:
+          name: "Flying Object Classifier ${{ github.ref_name }}"
+          body: |
+            ## Ауада ұшатын объектілерді жіктеу / Flying Object Classifier ${{ github.ref_name }}
+
+            ### Жүктеп алу / Download
+
+            | Файл / File | Сипаттама / Description |
+            |---|---|
+            | `flying-object-classifier-${{ github.ref_name }}.zip` | Бастапқы код (ZIP) / Source code (ZIP) |
+            | `flying_object_classifier-*.tar.gz` | Python source distribution |
+            | `flying_object_classifier-*.whl` | Python wheel (pip install) |
+
+            ### Орнату / Installation
+
+            ```bash
+            pip install flying_object_classifier-${{ github.ref_name }}-py3-none-any.whl
+            ```
+
+            немесе / or clone from source:
+
+            ```bash
+            git clone https://github.com/${{ github.repository }}.git
+            cd app
+            pip install -r requirements.txt
+            ```
+          files: |
+            flying-object-classifier-${{ github.ref_name }}.zip
+            dist/*.tar.gz
+            dist/*.whl
